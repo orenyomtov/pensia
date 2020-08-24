@@ -172,7 +172,18 @@
         function calculateFrayer(age, salary, startedWorkingAge) {
             const averageDepositFee = 2.15 / 100;
             const averageAccFee = 0.5 / 100;
+
+            const goodDepositFee = 1.49/100;
+            const goodAccFee = 0.1/100;
+
+            const retirementAge = 65
             const normalYield = 5/100;
+
+            const yearsWorked = age - startedWorkingAge;
+            const yearsLeft = retirementAge - age
+
+            const pensionSoFar = calculatePension(salary, yearsWorked, normalYield, averageDepositFee, averageAccFee, 0);
+            const 
 
             return {
                 pastLoss: 2000,
