@@ -90,6 +90,28 @@
     </form>
 
     <script>
+
+        const age = 30;
+        const salary = 28;
+        const startedWorkingAge = 26;
+
+        const yearsWorking = age - startedWorkingAge;
+
+        const employerCompensationDep = 8.33;
+        const employerPensionDep = 6.5;
+        const employeePensionDep = 6;
+        const pensionDepositPercent = (employerCompensationDep + employerPensionDep + employeePensionDep)/100
+        const yearlyPensionDeposit = salary * pensionDepositPercent * 12;
+
+        const currentDepositFee = 2.15;
+        const currentAccFee = 0.5;
+
+        function getCurrentPensionSize(salary, yearsWorking, yield) {
+            let pensionSize = 0;
+            for (let i = 0; i < yearsWorking; i++) {
+                
+            }
+        }
         // calculation code here
     </script>
 </body>
