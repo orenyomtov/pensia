@@ -113,14 +113,14 @@
     </div>
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="calculations">
-        <h2 class="display-4-5">עד היום דפקו אותך על סך <span id="pastLoss">50,000</span> שקל</h2>
+        <h2 class="display-4-5">עד היום דפקו אותך על סך <span id="pastLoss"></span> שקל</h2>
         <h2>אם תעבור לקרן ברירת מחדל בפנסיה</h2>
-        <h2 class="display-4"><span id="bottomline">תוכל לחסוך<span id="total">400,000</span> שקל עד גיל פרישה</span>
+        <h2 class="display-4"><span id="bottomline">תוכל לחסוך<span id="futureGains"></span> שקל עד גיל פרישה</span>
         </h2>
 
         <p class="lead"><br>
-            רוצה ללמוד איך לא להיות פראיר?<br>
-            קרא את <a href="https://www.facebook.com/Finaninja/posts/262057594504625">מדריך הפנסיה של הנינג׳ה</a>
+            רוצה ללמוד עוד על קרנות ברירת מחדל בפנסיה?<br>
+            <a href="https://mof.gov.il/hon/Pages/DefaultPensionFund.aspx">לחץ כאן</a>
         </p>
     </div>
 
@@ -128,11 +128,10 @@
     <script src="rough-notation.iife.js"></script>
 
     <script>
-        const a1 = RoughNotation.annotate(document.querySelector('#fees'), { type: 'underline', color: 'red', iterations: 2, rtl: true });
-        const a2 = RoughNotation.annotate(document.querySelector('#insurance'), { type: 'underline', color: 'red', iterations: 2, rtl: true });
-        const a3 = RoughNotation.annotate(document.querySelector('#bottomline'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true });
+        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'highlight', color: 'orange', iterations: 1, multiline: true, rtl: true });
+        const a2 = RoughNotation.annotate(document.querySelector('#futureGains'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true });
 
-        const ag = RoughNotation.annotationGroup([a1, a2, a3]);
+        const ag = RoughNotation.annotationGroup([a1, a2]);
 
         function onSubmit() {
             console.log(1);
@@ -156,9 +155,8 @@
 
             let frayer = calculateFrayer(age, salary, startedWorkingAge)
 
-            document.getElementById('fees').innerText = frayer.yearlyFees;
-            document.getElementById('insurance').innerText = frayer.yearlyInsurance;
-            document.getElementById('total').innerText = frayer.yearlyFees + frayer.yearlyInsurance;
+            document.getElementById('pastLoss').innerText = frayer.pastLoss;
+            document.getElementById('futureGains').innerText = frayer.futureGains;
 
             calc.style.display = 'block';
             calc.scrollIntoView(true);
@@ -182,7 +180,7 @@
             const yearsLeft = retirementAge - age
 
             const pensionSoFar = calculatePension(salary, yearsWorked, normalYield, averageDepositFee, averageAccFee, 0);
-            const 
+            
 
             return {
                 pastLoss: 2000,
