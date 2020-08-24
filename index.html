@@ -97,19 +97,41 @@
 
         const yearsWorking = age - startedWorkingAge;
 
-        const employerCompensationDep = 8.33;
-        const employerPensionDep = 6.5;
-        const employeePensionDep = 6;
-        const pensionDepositPercent = (employerCompensationDep + employerPensionDep + employeePensionDep)/100
-        const yearlyPensionDeposit = salary * pensionDepositPercent * 12;
+        function getYearlyPensionDeposit(salary) {
+            const employerCompensationDep = 8.33/100;
+            const employerPensionDep = 6.5/100;
+            const employeePensionDep = 6/100;
+            const pensionDepositPercent = employerCompensationDep + employerPensionDep + employeePensionDep
+            const yearlyPensionDeposit = salary * pensionDepositPercent * 12;
+            return yearlyPensionDeposit
+        }
 
-        const currentDepositFee = 2.15;
-        const currentAccFee = 0.5;
+        const currentDepositFee = 2.15/100;
+        const currentAccFee = 0.5/100;
 
-        function getCurrentPensionSize(salary, yearsWorking, yield) {
-            let pensionSize = 0;
-            for (let i = 0; i < yearsWorking; i++) {
-                
+        function calculatePension(salary, yearsNum, yield, depositFee, accFee, initialAmount) {
+            let pensionSize = initialAmount || 0;
+            let depositFeePaid = 0;
+            let accFeePaid = 0;
+            
+            const yearlyPensionDeposit = getYearlyPensionDeposit(salary)
+            const depositAfterFee = yearlyPensionDeposit * (1 - depositFee)
+            for (let i = 0; i < yearsNum; i++) {
+                console.log("pensionSize", pensionSize)
+                const withNewDeposit = pensionSize + depositAfterFee;
+                console.log("with new deposit", withNewDeposit)
+                const withYields = withNewDeposit * (1 + yield);
+                console.log("with yields", withYields)
+                const afterAccFee = withNewDeposit * (1 + yield - accFee);
+
+                depositFeePaid += yearlyPensionDeposit - depositFeePaid;
+                accFeePaid += withYields - afterAccFee;
+                pensionSize = afterAccFee;
+            }
+            return {
+                pensionSize,
+                depositFeePaid,
+                accFeePaid
             }
         }
         // calculation code here
