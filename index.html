@@ -148,6 +148,47 @@
             calc.scrollIntoView(true);
             ag.show();
         }
+
+        const age = 30;
+        const salary = 28;
+        const startedWorkingAge = 26;
+
+        const yearsWorking = age - startedWorkingAge;
+
+        function getYearlyPensionDeposit(salary) {
+            const employerCompensationDep = 8.33/100;
+            const employerPensionDep = 6.5/100;
+            const employeePensionDep = 6/100;
+            const pensionDepositPercent = employerCompensationDep + employerPensionDep + employeePensionDep
+            const yearlyPensionDeposit = salary * pensionDepositPercent * 12;
+            return yearlyPensionDeposit
+        }
+
+        const currentDepositFee = 2.15/100;
+        const currentAccFee = 0.5/100;
+
+        function calculatePension(salary, yearsNum, yield, depositFee, accFee, initialAmount) {
+            let pensionSize = initialAmount || 0;
+            let depositFeePaid = 0;
+            let accFeePaid = 0;
+            
+            const yearlyPensionDeposit = getYearlyPensionDeposit(salary)
+            const depositAfterFee = yearlyPensionDeposit * (1 - depositFee)
+            for (let i = 0; i < yearsNum; i++) {
+                const withNewDeposit = pensionSize + depositAfterFee;
+                const withYields = withNewDeposit * (1 + yield);
+                const afterAccFee = withNewDeposit * (1 + yield - accFee);
+
+                depositFeePaid += yearlyPensionDeposit - depositAfterFee;
+                accFeePaid += withYields - afterAccFee;
+                pensionSize = afterAccFee;
+            }
+            return {
+                pensionSize,
+                depositFeePaid,
+                accFeePaid
+            }
+        }
     </script>
 
 
