@@ -179,12 +179,20 @@
             const yearsWorked = age - startedWorkingAge;
             const yearsLeft = retirementAge - age
 
-            const pensionSoFar = calculatePension(salary, yearsWorked, normalYield, averageDepositFee, averageAccFee, 0);
-            
+            const badPastPension = calculatePension(salary, yearsWorked, normalYield, averageDepositFee, averageAccFee, 0);
+            const goodPastPension = calculatePension(salary, yearsWorked, normalYield, goodDepositFee, goodAccFee, 0);
+
+            const currentPensionSize = badPastPension.pensionSize;
+            const pastLoss = goodPastPension.pensionSize - currentPensionSize;
+
+            const badFuturePension = calculatePension(salary, yearsLeft, normalYield, averageDepositFee, averageAccFee, currentPensionSize)
+            const goodFuturePension = calculatePension(salary, yearsLeft, normalYield, goodDepositFee, goodAccFee, currentPensionSize)
+
+            const futureGains = goodFuturePension.pensionSize - badFuturePension.pensionSize;
 
             return {
-                pastLoss: 2000,
-                futureGains: 7000
+                pastLoss,
+                futureGains
             }
         }
 
