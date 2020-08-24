@@ -121,7 +121,7 @@
                 const withYields = withNewDeposit * (1 + yield);
                 const afterAccFee = withNewDeposit * (1 + yield - accFee);
 
-                depositFeePaid += yearlyPensionDeposit - depositFeePaid;
+                depositFeePaid += yearlyPensionDeposit - depositAfterFee;
                 accFeePaid += withYields - afterAccFee;
                 pensionSize = afterAccFee;
             }
