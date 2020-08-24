@@ -95,14 +95,14 @@
                 </div>
                 <div class="card mb-4 border-0">
                     <div class="card-body">
-                        <h3 class="card-title pricing-card-title">אני מרוויח</h3>
-                        <input type="number" name="salary" class="form-control" required></input>
+                        <h3 class="card-title pricing-card-title">התחלתי לעבוד בגיל</h3>
+                        <input type="number" name="start_of_work_age" class="form-control" required></input>
                     </div>
                 </div>
                 <div class="card mb-4 border-0">
                     <div class="card-body">
-                        <h3 class="card-title pricing-card-title">התחלתי לעבוד בגיל</h3>
-                        <input type="number" name="start_of_work_age" class="form-control" required></input>
+                        <h3 class="card-title pricing-card-title">אני מרוויח</h3>
+                        <input type="number" name="salary" class="form-control" required></input>
                     </div>
                 </div>
 
@@ -112,15 +112,19 @@
         </form>
     </div>
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="calculations">
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="calculations">
         <h2 class="display-4-5">עד היום דפקו אותך על סך <span id="pastLoss"></span> שקל</h2>
         <h2>אם תעבור לקרן ברירת מחדל בפנסיה</h2>
         <h2 class="display-4"><span id="future">תוכל לחסוך <span id="futureGains"></span> שקל עד גיל פרישה</span>
         </h2>
 
         <p class="lead"><br>
-            רוצה ללמוד עוד על איך לחסוך לפנסיה בקלות?<br>
-            <a href="https://mof.gov.il/hon/Pages/DefaultPensionFund.aspx">לחץ כאן</a>
+            <a href="" target="_blank">איך חישבנו את זה?</a>
+        </p>
+
+        <p class="lead">
+            רוצה ללמוד איך לעשות סדר בפנסיה?<br>
+            <a href="https://www.facebook.com/Finaninja/posts/262057594504625" target="_blank">לחץ כאן למדריך הפנסיה</a>
         </p>
     </div>
 
@@ -128,7 +132,7 @@
     <script src="rough-notation.iife.js"></script>
 
     <script>
-        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'underline', color: 'red', iterations: 3 });
+        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'circle', color: 'red', padding: 10, iterations: 3 });
         const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true });
 
         const ag = RoughNotation.annotationGroup([a1, a2]);
