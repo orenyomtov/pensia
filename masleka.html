@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון פנסיה</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <pre id="pre"></pre>
+
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script>
+        function readColumnWiseData(range, ws) {
+            var columnWiseData = [];
+            for (var C = range.s.c; C <= range.e.c; ++C) {
+                columnWiseData[C] = [];
+                for (var R = range.s.r; R <= range.e.r; ++R) {
+
+                    var cellref = XLSX.utils.encode_cell({ c: C, r: R });
+                    if (!ws[cellref]) continue;
+                    var cell = ws[cellref];
+                    columnWiseData[C].push(cell.v);
+
+                };
+            }
+            return columnWiseData;
+        }
+
+        function convertCSVToJSON(rows) {
+            const titles = rows[0];
+
+            return rows.slice(1).map(row => {
+                const values = row;
+                return titles.reduce((object, curr, i) => (object[curr] = values[i], object), {})
+            });
+        };
+
+        function sheetToJson(sheet, skipRows = 2) {
+            return convertCSVToJSON(readColumnWiseData(XLSX.utils.decode_range(`A${skipRows+1}:${sheet['!ref'].split(':')[1]}`), sheet));
+        }
+
+
+        function handleDrop(e) {
+            e.stopPropagation(); e.preventDefault();
+            var files = e.dataTransfer.files, f = files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var data = new Uint8Array(e.target.result);
+                var workbook = XLSX.read(data, { type: 'array' });
+
+                window.w = workbook;
+                window.p=[];
+                pre = document.getElementById('pre');
+
+                for (let sheet of Object.values(w.Sheets)) {
+                    pre.innerText += (`${JSON.stringify(sheetToJson(sheet), 4, 4)}\n`);
+                    window.p.push(...sheetToJson(sheet));
+                }
+            };
+            reader.readAsArrayBuffer(f);
+        }
+
+        document.body.addEventListener('drop', handleDrop, false);
+
+        document.body.addEventListener("dragover", function (event) {
+            event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

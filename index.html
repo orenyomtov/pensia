@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>כמה דופקים אותי בפנסיה?</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Rubik" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <style>
+        :root {
+            font-size: 14px;
+            --font-family-sans-serif: Rubik;
+        }
+
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+        }
+
+        .container {
+            max-width: 960px;
+        }
+
+        .pricing-header {
+            max-width: 700px;
+        }
+
+        .card-deck .card {
+            min-width: 220px;
+        }
+
+        .border-top {
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .btn-xl {
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="was-validated">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4">כמה דופקים אותי בפנסיה?</h1>
+            <p class="lead"></p>
+        </div>
+
+        <div class="container">
+            <div class="card-deck mb-3 text-center">
+
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h2 class="card-title pricing-card-title">אני בן</h2>
+                        <input type="number" name="current_age" placeholder="42" required></input>
+                    </div>
+                </div>
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h2 class="card-title pricing-card-title">אני מרוויח</h2>
+                        <input type="number" name="salary" placeholder="14000" required></input>
+                    </div>
+                </div>
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h2 class="card-title pricing-card-title">התחלתי לעבוד בגיל</h2>
+                        <input type="number" name="start_of_work_age" placeholder="26" required></input>
+                    </div>
+                </div>
+
+                <button type="button" type="submit" class="btn btn-xl btn-block btn-primary">כמה דופקים אותי?</button>
+            </div>
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</body>
+
+</html>
