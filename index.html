@@ -10,15 +10,22 @@
     <title>כמה דופקים אותי בפנסיה?</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/icon?family=Rubik" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <style>
-        :root {
+        body {
             font-size: 14px;
-            --font-family-sans-serif: Rubik;
+        }
+        body, .card {
+            background-color: #fff9f4;
+        }
+
+        body {
+            font-family: Rubik, sans-serif !important
         }
 
         @media (min-width: 768px) {
@@ -52,46 +59,98 @@
             font-size: 20px;
             border-radius: 7px;
         }
+
+        #calculations {
+            display: none;
+        }
+
+        .display-4-5 {
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        #calculations div {
+            line-height: 1.5;
+        }
     </style>
 </head>
 
 <body>
-    <form class="was-validated">
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <h1 class="display-4">כמה דופקים אותי בפנסיה?</h1>
-            <p class="lead"></p>
-        </div>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-3">כמה דופקים אותי בפנסיה?</h1>
+        <p class="lead"></p>
+    </div>
 
-        <div class="container">
+    <div class="container">
+        <form id="form">
             <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h3 class="card-title pricing-card-title">אני בן</h3>
+                        <input type="number" name="current_age" class="form-control" required></input>
+                    </div>
+                </div>
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h3 class="card-title pricing-card-title">אני מרוויח</h3>
+                        <input type="number" name="salary" class="form-control" required></input>
+                    </div>
+                </div>
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h3 class="card-title pricing-card-title">התחלתי לעבוד בגיל</h3>
+                        <input type="number" name="start_of_work_age" class="form-control" required></input>
+                    </div>
+                </div>
 
-                <div class="card mb-4 border-0">
-                    <div class="card-body">
-                        <h2 class="card-title pricing-card-title">אני בן</h2>
-                        <input type="number" name="current_age" placeholder="42" required></input>
-                    </div>
-                </div>
-                <div class="card mb-4 border-0">
-                    <div class="card-body">
-                        <h2 class="card-title pricing-card-title">אני מרוויח</h2>
-                        <input type="number" name="salary" placeholder="14000" required></input>
-                    </div>
-                </div>
-                <div class="card mb-4 border-0">
-                    <div class="card-body">
-                        <h2 class="card-title pricing-card-title">התחלתי לעבוד בגיל</h2>
-                        <input type="number" name="start_of_work_age" placeholder="26" required></input>
-                    </div>
-                </div>
-
-                <button type="button" type="submit" class="btn btn-xl btn-block btn-primary">כמה דופקים אותי?</button>
+                <button type="button" class="btn btn-xl btn-block btn-primary" onclick="onSubmit()">כמה דופקים
+                    אותי?</button>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="calculations">
+        <h2 class="display-4-5">מרבית האנשים משלמים בשנה</h2>
+        <h2>1. <span id="fees">2000</span> שקל מיותרים על דמי ניהול</h2>
+        <h2>2. <span id="insurance">5000</span> שקל מיותרים על ביטוחים</h2>
+        <h2 class="display-4"><span id="bottomline">סה״כ דופקים אותך ב<span id="total">7000</span> שקל כל שנה</span>
+        </h2>
+    </div>
+
+
+    <script src="rough-notation.iife.js"></script>
 
     <script>
-        // calculation code here
+        const a1 = RoughNotation.annotate(document.querySelector('#fees'), { type: 'underline', color: 'red', iterations: 2, rtl: true });
+        const a2 = RoughNotation.annotate(document.querySelector('#insurance'), { type: 'underline', color: 'red', iterations: 2, rtl: true });
+        const a3 = RoughNotation.annotate(document.querySelector('#bottomline'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true });
+
+        const ag = RoughNotation.annotationGroup([a1, a2, a3]);
+
+        function onSubmit() {
+            console.log(1);
+
+            let form = document.getElementById('form');
+            let calc = document.getElementById('calculations');
+
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                form.classList.add('was-validated');
+
+                // return;
+            }
+            form.classList.remove('was-validated');
+
+            calc.style.display = 'block';
+            calc.scrollIntoView(true);
+            ag.show();
+        }
     </script>
+
+
 </body>
 </body>
 
