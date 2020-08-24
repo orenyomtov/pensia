@@ -170,17 +170,15 @@
 
 
         function calculateFrayer(age, salary, startedWorkingAge) {
+            const averageDepositFee = 2.15 / 100;
+            const averageAccFee = 0.5 / 100;
+            const normalYield = 5/100;
+
             return {
-                yearlyFees: 2000,
-                yearlyInsurance: 7000
+                pastLoss: 2000,
+                futureGains: 7000
             }
         }
-
-        const age = 30;
-        const salary = 28;
-        const startedWorkingAge = 26;
-
-        const yearsWorking = age - startedWorkingAge;
 
         function getYearlyPensionDeposit(salary) {
             const employerCompensationDep = 8.33 / 100;
@@ -190,9 +188,6 @@
             const yearlyPensionDeposit = salary * pensionDepositPercent * 12;
             return yearlyPensionDeposit
         }
-
-        const currentDepositFee = 2.15 / 100;
-        const currentAccFee = 0.5 / 100;
 
         function calculatePension(salary, yearsNum, yield, depositFee, accFee, initialAmount) {
             let pensionSize = initialAmount || 0;
