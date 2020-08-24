@@ -117,11 +117,8 @@
             const yearlyPensionDeposit = getYearlyPensionDeposit(salary)
             const depositAfterFee = yearlyPensionDeposit * (1 - depositFee)
             for (let i = 0; i < yearsNum; i++) {
-                console.log("pensionSize", pensionSize)
                 const withNewDeposit = pensionSize + depositAfterFee;
-                console.log("with new deposit", withNewDeposit)
                 const withYields = withNewDeposit * (1 + yield);
-                console.log("with yields", withYields)
                 const afterAccFee = withNewDeposit * (1 + yield - accFee);
 
                 depositFeePaid += yearlyPensionDeposit - depositFeePaid;
