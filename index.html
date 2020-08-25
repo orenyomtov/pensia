@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://hamidheidarinia.github.io/bootstrap-rtl/4.2/assets/css/custom-rtl.min.css">
+
     <link href="https://fonts.googleapis.com/icon?family=Rubik" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -81,16 +83,15 @@
 <body>
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-3">כמה דופקים אותי בפנסיה?</h1>
-        <p class="lead"></p>
     </div>
 
     <div class="container">
-        <form id="form">
+        <form id="form" onsubmit="console.log(1)">
             <div class="card-deck mb-3 text-center">
                 <div class="card mb-4 border-0">
                     <div class="card-body">
                         <h3 class="card-title pricing-card-title">אני בן</h3>
-                        <input type="number" name="current_age" class="form-control" required></input>
+                        <input type="number" name="current_age" class="form-control" autofocus required></input>
                     </div>
                 </div>
                 <div class="card mb-4 border-0">
@@ -106,7 +107,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-xl btn-block btn-primary" onclick="onSubmit()">כמה דופקים
+                <button type="button" id="submit" class="btn btn-xl btn-block btn-primary" onclick="onSubmit()">כמה דופקים
                     אותי?</button>
             </div>
         </form>
@@ -115,11 +116,11 @@
     <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="calculations">
         <h2 class="display-4-5">עד היום דפקו אותך על סך <span id="pastLoss"></span> שקל</h2>
         <h2>אם תעבור לקרן ברירת מחדל בפנסיה</h2>
-        <h2 class="display-4"><span id="future">תוכל לחסוך <span id="futureGains"></span> שקל עד גיל פרישה</span>
+        <h2 class="display-4"><span id="future">תוכל לחסוך עוד <span id="futureGains"></span> שקל עד גיל פרישה</span>
         </h2>
 
-        <p class="lead"><br>
-            <a href="" target="_blank">איך חישבנו את זה?</a>
+        <p class="lead">
+            <a href="" data-toggle="modal" data-target="#modal" target="_blank">איך חישבנו את זה?</a>
         </p>
 
         <p class="lead">
@@ -128,18 +129,66 @@
         </p>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade show" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">איך חישבנו את זה?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
+                    </p>
+                    <p>
+                        בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
+                    </p>
+                    <p>
+                        בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">הבנתי, תודה!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <script src="rough-notation.iife.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
     <script>
+        var inputs = document.getElementsByTagName("input");
+        for (input of inputs)
+            input.addEventListener("keyup", function (event) {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("submit").click();
+                }
+            });
+
         const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'circle', color: 'red', padding: 10, iterations: 3 });
         const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true });
 
         const ag = RoughNotation.annotationGroup([a1, a2]);
 
         function onSubmit() {
-            console.log(1);
-
             let form = document.getElementById('form');
             let calc = document.getElementById('calculations');
 
@@ -165,8 +214,6 @@
             calc.style.display = 'block';
             calc.scrollIntoView(true);
             ag.show();
-
-
         }
 
         function numberWithCommas(x) {
