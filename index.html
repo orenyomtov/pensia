@@ -183,8 +183,8 @@
                 }
             });
 
-        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'circle', color: 'red', padding: 10, iterations: 3 });
-        const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true });
+        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'circle', color: 'red', padding: 10, animationDuration: 1500});
+        const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true, animationDuration: 1500});
 
         const ag = RoughNotation.annotationGroup([a1, a2]);
 
