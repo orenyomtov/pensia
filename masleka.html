@@ -83,6 +83,10 @@
         #calculations div {
             line-height: 1.5;
         }
+
+        .file-upload {
+            color: #4285f4 !important;
+        }
     </style>
 </head>
 
@@ -112,15 +116,26 @@
                         <input type="number" name="salary" class="form-control" required></input>
                     </div>
                 </div>
+            </div>
 
-                <div class="file-upload-wrapper mb-5" id="upload">
-                    <input type="file" id="input-file-now" class="file-upload" />
-                </div>
+            <div class="file-upload-wrapper mb-5" id="upload">
+                <input type="file" id="input-file-now" class="file-upload" />
+            </div>
         </form>
     </div>
 
-    <pre id="pre"></pre>
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="calculations">
+        <h2 class="display-4-5">עד היום דפקו אותך על סך <span id="pastLoss"></span> שקל</h2>
+        <h2>אם תעבור לקרן ברירת מחדל בפנסיה</h2>
+        <h2 class="display-4"><span id="future">תוכל לחסוך עוד <span id="futureGains"></span> שקל עד גיל פרישה</span>
+        </h2>
 
+        <p class="lead">
+            <a href="" data-toggle="modal" data-target="#modal" target="_blank">איך חישבנו את זה?</a>
+        </p>
+    </div>
+
+    <script src="rough-notation.iife.js"></script>
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- MDB core JavaScript -->
@@ -128,6 +143,11 @@
 
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
     <script>
+        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'underline', color: 'red', animationDuration: 1500 });
+        const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true, animationDuration: 1500 });
+
+        const ag = RoughNotation.annotationGroup([a1, a2]);
+
         var inputs = document.querySelectorAll('input[type=number]');
 
         for (input of inputs) {
@@ -186,32 +206,61 @@
             return convertCSVToJSON(readColumnWiseData(XLSX.utils.decode_range(`A${skipRows + 1}:${sheet['!ref'].split(':')[1]}`), sheet));
         }
 
+        function calculateFrayerWithMasleka(age, salary, startedWorkingAge, pensionFunds) {
+            console.log(pensionFunds);
+            
+            return {
+                pastLoss: 12345,
+                futureGains: 123456
+            }
+        }
+
+        function extractPensionFunds(data) {
+            var data = new Uint8Array(data);
+            var workbook = XLSX.read(data, { type: 'array' });
+
+            return sheetToJson(workbook.Sheets["קרנות פנסיה חדשות"]).map(x => ({
+                pensionSize: x["סה\"כ חיסכון"],
+                depositFee: x["דמי ניהול – הפקדות"],
+                accFee: x["דמי ניהול - חיסכון"],
+            }));
+        }
+        
+        function numberWithCommas(x) {
+            return parseInt(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
         function handleDrop(input) {
             var files = input.files, f = files[0];
             if (!f.name.endsWith('.xls')) {
-                alert('בבקשה תעלה את הקובץ ״פרטי המוצרים שלי.xls״');
+                alert('בבקשה תעלו את הקובץ ״פרטי המוצרים שלי.xls״');
                 return;
             }
             var reader = new FileReader();
             reader.onload = function (e) {
                 document.getElementById('upload').style.display = 'none'
-                var data = new Uint8Array(e.target.result);
-                var workbook = XLSX.read(data, { type: 'array' });
+                let data = new Uint8Array(e.target.result);
+                let form = document.getElementById('form');
+                let calc = document.getElementById('calculations');
 
-                window.w = workbook;
-                window.p = [];
-                pre = document.getElementById('pre');
+                pensionFunds = extractPensionFunds(data);
 
-                for (let sheet of Object.values(w.Sheets)) {
-                    pre.innerText += (`${JSON.stringify(sheetToJson(sheet), 4, 4)}\n`);
-                    window.p.push(...sheetToJson(sheet));
-                }
+                const age = parseInt(form.current_age.value);
+                const salary = parseInt(form.salary.value);
+                const startedWorkingAge = parseInt(form.start_of_work_age.value);
+
+                let frayer = calculateFrayerWithMasleka(age, salary, startedWorkingAge, pensionFunds)
+
+                document.getElementById('pastLoss').innerText = numberWithCommas(frayer.pastLoss);
+                document.getElementById('futureGains').innerText = numberWithCommas(frayer.futureGains);
+
+                calc.style.display = 'block';
+                calc.scrollIntoView(true);
+                ag.hide();
+                ag.show();
             };
             reader.readAsArrayBuffer(f);
         }
-        document.getElementById('upload').addEventListener('file_upload.fileReady', console.log, false);
-        // document.getElementById('upload').addEventListener('drop', handleDrop, false);
     </script>
 </body>
 
