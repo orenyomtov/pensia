@@ -92,9 +92,31 @@
     </div>
 
     <div class="container">
-        <div class="file-upload-wrapper" id="upload">
-            <input type="file" id="input-file-now" class="file-upload" />
-        </div>
+        <form id="form">
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h3 class="card-title pricing-card-title">אני בן</h3>
+                        <input type="number" name="current_age" class="form-control" autofocus required></input>
+                    </div>
+                </div>
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h3 class="card-title pricing-card-title">התחלתי לעבוד בגיל</h3>
+                        <input type="number" name="start_of_work_age" class="form-control" required></input>
+                    </div>
+                </div>
+                <div class="card mb-4 border-0">
+                    <div class="card-body">
+                        <h3 class="card-title pricing-card-title">אני מרוויח</h3>
+                        <input type="number" name="salary" class="form-control" required></input>
+                    </div>
+                </div>
+
+                <div class="file-upload-wrapper mb-5" id="upload">
+                    <input type="file" id="input-file-now" class="file-upload" />
+                </div>
+        </form>
     </div>
 
     <pre id="pre"></pre>
@@ -104,9 +126,29 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="mdb-file-upload.min.js"></script>
 
-
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
     <script>
+        var inputs = document.querySelectorAll('input[type=number]');
+
+        for (input of inputs) {
+            input.value = getCookie(input.name);
+
+            input.addEventListener('input', function () {
+                setCookie(input.name, input.value);
+            }, false);
+        }
+
+        function getCookie(name) {
+            var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+            return v ? v[2] : null;
+        }
+
+        function setCookie(name, value, days = 999) {
+            var d = new Date;
+            d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+            document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+        }
+
         $('.file-upload').file_upload({
             messages: {
                 default: "תגרור לכאן את הקובץ אקסל שהורדתם מהמסלקה או תלחצו"
