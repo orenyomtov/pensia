@@ -86,18 +86,18 @@
         </h2>
 
         <div class="container text-center">
-            <button data-toggle="modal" data-target="#modal" class="btn btn-xl btn-light mt-4">
+            <button data-toggle="modal" data-target="#modal-how" class="btn btn-xl btn-light mt-4">
                 איך חישבנו את זה?
             </button>
 
-            <button data-toggle="modal" data-target="#modal" class="btn btn-xl btn-primary mt-4">
+            <button data-toggle="modal" data-target="#modal-next" class="btn btn-xl btn-primary mt-4">
                 מה הלאה?
             </button>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade show" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <!-- Modal איך חישבנו את זה? -->
+    <div class="modal fade show" id="modal-how" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -165,7 +165,44 @@
         </div>
     </div>
 
-
+    <!-- Modal מה הלאה -->
+    <div class="modal fade show" id="modal-next" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">מה הלאה?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size: larger">
+                        המספרים שהצגנו כאן הם הערכה גסה - אבל הם לא מספרים באויר.
+                    </p>
+                    <p>
+                        בשנת 2018 משרד האוצר בחר ארבע קרנות פנסיה זולות ומומלצות, והגדיר אותן כ<a
+                            href="https://mof.gov.il/hon/Pages/DefaultPensionFund.aspx" target="_blank">קרנות פנסיה
+                            נבחרות</a>.<br />
+                        אנשים רבים לא מודעים למסלולים המוזלים בפנסיה, ומשלמים דמי ניהול גבוהים.<br />
+                        החישוב שלנו בדק כמה כסף הייתם יכולים לחסוך אם הייתם משלמים את דמי הניהול המוזלים של קרן פנסיה
+                        נבחרת.
+                    </p>
+                    <p>
+                        <strong>מסתבר שלמרות שההפרש בדמי הניהול נשמע קטן, לאורך השנים ההפרש מצטבר לסכום משמעותי בזכות
+                            אפקט
+                            הריבית דריבית.</strong>
+                    </p>
+                    <p>
+                        תשתפו את עמוד זה עם יקיריכם
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">הבנתי, תודה!</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="rough-notation.iife.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
