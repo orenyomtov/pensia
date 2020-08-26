@@ -7,7 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>כמה דופקים אותי בפנסיה?</title>
+    <title>
+        כמה דופקים אותי בפנסיה?
+    </title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,8 +25,11 @@
 
 <body>
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h4>
+            רוב הישראלים משלמים הרבה יותר מדי על הפנסיה שלהם
+        </h4>
         <h1 class="display-3">
-            כמה דופקים אותי בפנסיה?
+            כמה שווה לכם להוזיל את הפנסיה?
         </h1>
     </div>
 
@@ -33,7 +38,7 @@
             <div class="card-deck mb-3 text-center">
                 <div class="card mb-4 border-0">
                     <div class="card-body">
-                        <h3 class="card-title pricing-card-title">אני בן</h3>
+                        <h3 class="card-title pricing-card-title">הגיל שלי</h3>
                         <input type="number" name="current_age" class="form-control" autofocus required></input>
                     </div>
                 </div>
@@ -45,21 +50,28 @@
                 </div>
                 <div class="card mb-4 border-0">
                     <div class="card-body">
-                        <h3 class="card-title pricing-card-title">אני מרוויח</h3>
+                        <h3 class="card-title pricing-card-title">משכורת ברוטו</h3>
                         <input type="number" name="salary" class="form-control" required></input>
                     </div>
                 </div>
 
-                <button type="button" id="submit" class="btn btn-xl btn-block btn-primary" onclick="onSubmit()">כמה
-                    דופקים אותי?</button>
+                <button type="button" id="submit" class="btn btn-xl btn-block btn-primary" onclick="onSubmit()">
+                    אז כמה כסף זה?
+                </button>
             </div>
         </form>
     </div>
 
     <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="calculations">
-        <h2 class="display-4-5">עד היום דפקו אותך על סך <span id="pastLoss"></span> שקל</h2>
-        <h2>אם תעבור לקרן ברירת מחדל בפנסיה</h2>
-        <h2 class="display-4"><span id="future">תוכל לחסוך עוד <span id="futureGains"></span> שקל עד גיל פרישה</span>
+        <h2 class="display-4-5">
+            עד היום שילמתם 
+            <span id="pastLoss"></span>
+            ₪ מיותרים
+        </h2>
+        <h2>
+            אם תעברו לאחת מקרנות הפנסיה המומלצות ע"י משרד האוצר
+        </h2>
+        <h2 class="display-4"><span id="future">תוכלו לחסוך עוד <span id="futureGains"></span> ₪ עד גיל הפרישה</span>
         </h2>
 
         <p class="lead">
@@ -88,11 +100,9 @@
                         המספרים שהצגנו כאן הם הערכה גסה - אבל הם לא מספרים באויר
                     </p>
                     <p>
-                        בשנת 2018 משרד האוצר בחר ארבע קרנות פנסיה זולות ומומלצות, והגדיר אותן כקרנות פנסיה ברירת
-                        מחדל.<br />
+                        בשנת 2018 משרד האוצר בחר ארבע קרנות פנסיה זולות ומומלצות, והגדיר אותן כ״קרנות פנסיה נבחרות״.<br />
                         אנשים רבים לא מודעים למסלולים המוזלים בפנסיה, ומשלמים דמי ניהול גבוהים.<br />
-                        החישוב שלנו בדק כמה כסף הייתם יכולים לחסוך אם הייתם משלמים את דמי הניהול המוזלים של קרנות ברירת
-                        המחדל.
+                        החישוב שלנו בדק כמה כסף הייתם יכולים לחסוך אם הייתם משלמים את דמי הניהול המוזלים של קרן פנסיה נבחרת.
                     </p>
                     <p>
                         כדי שנוכל לבצע את החישוב התבססנו על מספר הנחות יסוד:
