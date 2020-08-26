@@ -108,8 +108,7 @@
                 </div>
 
                 <button type="button" id="submit" class="btn btn-xl btn-block btn-primary" onclick="onSubmit()">כמה
-                    דופקים
-                    אותי?</button>
+                    דופקים אותי?</button>
             </div>
         </form>
     </div>
@@ -237,7 +236,7 @@
                 }
             });
 
-        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'circle', color: 'red', padding: 10, animationDuration: 1500 });
+        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'underline', color: 'red', animationDuration: 1500 });
         const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true, animationDuration: 1500 });
 
         const ag = RoughNotation.annotationGroup([a1, a2]);
@@ -267,6 +266,7 @@
 
             calc.style.display = 'block';
             calc.scrollIntoView(true);
+            ag.hide();
             ag.show();
         }
 
