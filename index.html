@@ -86,7 +86,7 @@
     </div>
 
     <div class="container">
-        <form id="form" onsubmit="console.log(1)">
+        <form id="form">
             <div class="card-deck mb-3 text-center">
                 <div class="card mb-4 border-0">
                     <div class="card-body">
@@ -107,8 +107,8 @@
                     </div>
                 </div>
 
-                <button type="button" id="submit" class="btn btn-xl btn-block btn-primary" onclick="onSubmit()">כמה דופקים
-                    אותי?</button>
+                <button type="button" id="submit" class="btn btn-xl btn-block btn-primary" onclick="onSubmit()">כמה
+                    דופקים אותי?</button>
             </div>
         </form>
     </div>
@@ -200,6 +200,27 @@
         crossorigin="anonymous"></script>
 
     <script>
+        var inputs = document.querySelectorAll('input[type=number]');
+        
+        for (input of inputs) {
+            input.value = getCookie(input.name);
+
+            input.addEventListener('input', function () {
+                setCookie(input.name, input.value);
+            }, false);
+        }
+
+        function getCookie(name) {
+            var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+            return v ? v[2] : null;
+        }
+
+        function setCookie(name, value, days = 999) {
+            var d = new Date;
+            d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+            document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+        }
+
         var inputs = document.getElementsByTagName("input");
         for (input of inputs)
             input.addEventListener("keyup", function (event) {
@@ -211,8 +232,8 @@
                 }
             });
 
-        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'circle', color: 'red', padding: 10, animationDuration: 1500});
-        const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true, animationDuration: 1500});
+        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'underline', color: 'red', animationDuration: 1500 });
+        const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true, animationDuration: 1500 });
 
         const ag = RoughNotation.annotationGroup([a1, a2]);
 
@@ -241,6 +262,7 @@
 
             calc.style.display = 'block';
             calc.scrollIntoView(true);
+            ag.hide();
             ag.show();
         }
 
