@@ -185,7 +185,7 @@ function extractPensionFunds(data) {
 if (document.querySelector('.file-upload'))
     $('.file-upload').file_upload({
         messages: {
-            default: "תגרור לכאן את הקובץ אקסל שהורדתם מהמסלקה או תלחצו"
+            default: "תגרור לכאן את קובץ האקסל שהורדתם מהמסלקה או תלחצו"
         },
         allowedFileExtensions: ["xls"],
         onFileUpload: handleDrop
