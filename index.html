@@ -170,13 +170,16 @@
                         </ol>
                     </p>
                     <p>
-                        <i>מסתבר שלמרות שההפרש בדמי הניהול נשמע קטן, לאורך השנים ההפרש מצטבר לסכום משמעותי בזכות אפקט הריבית דריבית</i>
+                        <i>מסתבר שלמרות שההפרש בדמי הניהול נשמע קטן, לאורך השנים ההפרש מצטבר לסכום משמעותי בזכות אפקט הריבית דריבית.</i>
                     </p>
                     <p>
-                        רוצים לשחק עם המספרים בעצמכם? הכנו לכם אקסל עם כל החישובים
+                        רוצים לשחק עם המספרים בעצמכם? הכנו לכם
+                        <a href="https://docs.google.com/spreadsheets/d/11odS58OlyssaY8bLrq90XrT-yhgD2hYRMA9ZtLincmM/edit?usp=sharing" target="_blank">אקסל עם כל החישובים</a>.
                     </p>
                     <p>
-                        הפרויקט שלנו הוא קוד פתוח ללא מטרת רווח, במטרה להנגיש מידע לציבור
+                        הפרויקט שלנו הוא 
+                        <a href="https://github.com/orenyomtov/pensia" target="_blank">קוד פתוח</a>
+                         ללא מטרת רווח, במטרה להנגיש מידע לציבור.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -232,7 +235,7 @@
                 }
             });
 
-        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'underline', color: 'red', animationDuration: 1500 });
+        const a1 = RoughNotation.annotate(document.querySelector('#pastLoss'), { type: 'circle', color: 'red', animationDuration: 1000 });
         const a2 = RoughNotation.annotate(document.querySelector('#future'), { type: 'highlight', color: 'yellow', iterations: 1, multiline: true, rtl: true, animationDuration: 1500 });
 
         const ag = RoughNotation.annotationGroup([a1, a2]);
@@ -278,7 +281,7 @@
             const goodAccFee = 0.1 / 100;
 
             const retirementAge = 65
-            const normalYield = 4 / 100;
+            const normalYield = 6.85 / 100;
 
             const yearsWorked = age - startedWorkingAge;
             const yearsLeft = retirementAge - age
