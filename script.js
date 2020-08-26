@@ -38,6 +38,7 @@ const ag = RoughNotation.annotationGroup([a1, a2]);
 function onSubmit() {
     let form = document.getElementById('form');
     let calc = document.getElementById('calculations');
+    let submit = document.getElementById('submit');
 
     if (form.checkValidity() === false) {
         event.preventDefault();
@@ -59,6 +60,8 @@ function onSubmit() {
     document.getElementById('futureGains').innerText = numberWithCommas(frayer.futureGains);
 
     calc.style.display = 'block';
+    submit.style.display = 'none';
+    
     calc.scrollIntoView(true);
     ag.hide();
     ag.show();
