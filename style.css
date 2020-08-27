@@ -61,7 +61,9 @@ body {
     color: #4285f4 !important;
 }
 
-
+input[type=number] {
+  text-align: center;
+}
 
 
 
