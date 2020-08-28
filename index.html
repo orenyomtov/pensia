@@ -63,152 +63,123 @@
                 </button>
             </div>
         </form>
-    </div>
 
-    <div class="px-3 py-3 pb-md-4 mx-auto text-center" id="calculations">
-        <h2 class="display-4-5">
-            עד היום שילמתם
-            <span id="pastLoss"></span>
-            ₪ מיותרים
-        </h2>
-        <h2>
-            אם תעברו לאחת מקרנות הפנסיה המומלצות ע"י משרד האוצר
-        </h2>
 
-        <h2 class="display-4"><span id="future">תוכלו לחסוך עוד <span id="futureGains"></span> ₪ עד גיל הפרישה</span>
-        </h2>
+        <div class="px-3 py-3 pb-md-4 mx-auto text-center" id="calculations">
+            <h2 class="display-4-5">
+                עד היום שילמתם
+                <span id="pastLoss"></span>
+                ₪ מיותרים
+            </h2>
+            <h2>
+                אם תעברו לאחת מקרנות הפנסיה המומלצות ע"י משרד האוצר
+            </h2>
 
-        <div class="container text-center">
-            <button data-toggle="modal" data-target="#modal-how" class="btn btn-xl btn-outline-secondary mt-4">
+            <h2 class="display-4"><span id="future">תוכלו לחסוך עוד <span id="futureGains"></span> ₪ עד גיל
+                    הפרישה</span>
+            </h2>
+
+            <hr class="mt-5">
+
+            <h1 class="display-4 mt-5">
                 איך חישבנו את זה?
-            </button>
+            </h1>
 
-            <button data-toggle="modal" data-target="#modal-next" class="btn btn-xl btn-primary mt-4">
-                מה הלאה?
-            </button>
-        </div>
-    </div>
-
-    <!-- Modal איך חישבנו את זה? -->
-    <div class="modal fade show" id="modal-how" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">איך חישבנו את זה?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p style="font-size: larger">
-                        המספרים שהצגנו כאן הם הערכה גסה - אבל הם לא מספרים באויר.
-                    </p>
-                    <p>
-                        בשנת 2018 משרד האוצר בחר ארבע קרנות פנסיה זולות ומומלצות, והגדיר אותן כ
-                        <a href="https://mof.gov.il/hon/Pages/DefaultPensionFund.aspx" target="_blank">קרנות פנסיה
-                            נבחרות</a>.<br />
-                        אנשים רבים לא מודעים למסלולים המוזלים בפנסיה, ומשלמים דמי ניהול גבוהים.<br />
-                        החישוב שלנו בדק כמה כסף הייתם יכולים לחסוך אם הייתם משלמים את דמי הניהול המוזלים של קרן פנסיה
-                        נבחרת.
-                    </p>
-                    <p>
-                        כדי שנוכל לבצע את החישוב התבססנו על מספר הנחות יסוד:
-                    <ol>
-                        <li class="font-weight-bold">
-                            הנחנו שקרן הפנסיה שלך גובה דמי ניהול ממוצעים - 0.5% מהצבירה ו-2.15% מהפקדה.
-                        </li>
-                        <li class="font-weight-bold">
-                            הנחנו שתעברו לקרן פנסיה נבחרת שגובה דמי ניהול של 0.1% מהצבירה ו-1.49% מהפקדה.
-                        </li>
-                        <li>
-                            הנחנו שהמשכורת שלך לא משתנה.
-                        </li>
-                        <li>
-                            הנחנו שהתשואה בקרן שלך תהיה זהה לתשואה הממוצעת בפנסיה בעשרים השנים האחרונות - 6.85%.
-                        </li>
-                        <li>
-                            הנחנו שההפרשות לפנסיה יהיו רציפות וימשכו עד גיל הפרישה - 65.
-                        </li>
-                        <li>
-                            הנחנו שלא תמשכו את דמי הפיצויים, ושאתם זכאים להפרשות לפיצויים על פי סעיף 14.
-                        </li>
-                    </ol>
-                    </p>
-                    <p>
-                        <strong>מסתבר שלמרות שההפרש בדמי הניהול נשמע קטן, לאורך השנים ההפרש מצטבר לסכום משמעותי בזכות
-                            אפקט
-                            הריבית דריבית.</strong>
-                    </p>
-                    <p>
-                        רוצים לשחק עם המספרים בעצמכם? הכנו לכם
-                        <a href="https://docs.google.com/spreadsheets/d/11odS58OlyssaY8bLrq90XrT-yhgD2hYRMA9ZtLincmM/edit?usp=sharing"
-                            target="_blank">אקסל עם כל החישובים</a>.
-                    </p>
-                    <p>
-                        הפרויקט שלנו מפורסם
-                        <a href="https://github.com/orenyomtov/pensia" target="_blank">כקוד פתוח</a>
-                        ללא מטרת רווח, במטרה להנגיש מידע לציבור.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">הבנתי, תודה!</button>
-                </div>
+            <div class="text-right">
+                <p style="font-size: larger">
+                    המספרים שהצגנו כאן הם הערכה גסה - אבל הם לא מספרים באויר.
+                </p>
+                <p>
+                    בשנת 2018 משרד האוצר בחר ארבע קרנות פנסיה זולות ומומלצות, והגדיר אותן כ
+                    <a href="https://mof.gov.il/hon/Pages/DefaultPensionFund.aspx" target="_blank">קרנות פנסיה
+                        נבחרות</a>.<br />
+                    אנשים רבים לא מודעים למסלולים המוזלים בפנסיה, ומשלמים דמי ניהול גבוהים.<br />
+                    החישוב שלנו בדק כמה כסף הייתם יכולים לחסוך אם הייתם משלמים את דמי הניהול המוזלים של קרן פנסיה
+                    נבחרת.
+                </p>
+                <p>
+                    כדי שנוכל לבצע את החישוב התבססנו על מספר הנחות יסוד:
+                <ol>
+                    <li class="font-weight-bold">
+                        הנחנו שקרן הפנסיה שלך גובה דמי ניהול ממוצעים - 0.5% מהצבירה ו-2.15% מהפקדה.
+                    </li>
+                    <li class="font-weight-bold">
+                        הנחנו שתעברו לקרן פנסיה נבחרת שגובה דמי ניהול של 0.1% מהצבירה ו-1.49% מהפקדה.
+                    </li>
+                    <li>
+                        הנחנו שהמשכורת שלך לא משתנה.
+                    </li>
+                    <li>
+                        הנחנו שהתשואה בקרן שלך תהיה זהה לתשואה הממוצעת בפנסיה בעשרים השנים האחרונות - 6.85%.
+                    </li>
+                    <li>
+                        הנחנו שההפרשות לפנסיה יהיו רציפות וימשכו עד גיל הפרישה - 65.
+                    </li>
+                    <li>
+                        הנחנו שלא תמשכו את דמי הפיצויים, ושאתם זכאים להפרשות לפיצויים על פי סעיף 14.
+                    </li>
+                </ol>
+                </p>
+                <p>
+                    <strong>מסתבר שלמרות שההפרש בדמי הניהול נשמע קטן, לאורך השנים ההפרש מצטבר לסכום משמעותי בזכות
+                        אפקט
+                        הריבית דריבית.</strong>
+                </p>
+                <p>
+                    רוצים לשחק עם המספרים בעצמכם? הכנו לכם
+                    <a href="https://docs.google.com/spreadsheets/d/11odS58OlyssaY8bLrq90XrT-yhgD2hYRMA9ZtLincmM/edit?usp=sharing"
+                        target="_blank">אקסל עם כל החישובים</a>.
+                </p>
+                <p>
+                    הפרויקט שלנו מפורסם
+                    <a href="https://github.com/orenyomtov/pensia" target="_blank">כקוד פתוח</a>
+                    ללא מטרת רווח, במטרה להנגיש מידע לציבור.
+                </p>
             </div>
-        </div>
-    </div>
 
-    <!-- Modal מה הלאה -->
-    <div class="modal fade show" id="modal-next" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">מה הלאה?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p style="font-size: larger">
-                        מה שראיתם כאן הוא הערכה בלבד - עכשיו הגיע הזמן להשיג את הנתונים האמיתיים.
-                    </p>
-                    <p>
-                        הצעד הבא הוא לבדוק:
-                    <ol>
-                        <li>
-                            כמה דמי ניהול אתם משלמים על הפנסיה שלכם?
-                        </li>
-                        <li>
-                            איפה הפנסיה שלכם מנוהלת?
-                        </li>
-                    </ol>
-                    </p>
-                    <p>
-                        אם אתם לא יודעים את התשובות לשאלות האלה - אתם לא לבד! בשביל זה המציאו את <strong>המסלקה
-                            הפנסיונית</strong>.
-                    </p>
-                    <p>
-                        המסלקה הפנסיונית, הפועלת תחת משרד האוצר, מאפשרת לכם לקבל תמונת מצב מלאה על החסכונות הפנסיוניים
-                        שלכם.
-                    </p>
-                    <p>
-                        לאחר שתקבלו את תשובות המסלקה התקשרו לגוף המנהל את קרן הפנסיה שלכם ובקשו הנחה, זה עד כדי כך
-                        פשוט.<br />
-                        אם לא קיבלתם הנחה אתם תמיד יכולים לעבור, עם כל הכסף שצברתם עד היום,
-                        <a href="https://mof.gov.il/hon/Pages/DefaultPensionFund.aspx" target="_blank">לקרן פנסיה נבחרת
-                            של משרד האוצר</a>.
-                    </p>
-                    <p>
-                        אתם מוזמנים להשתמש
-                        <a href="https://docs.google.com/spreadsheets/d/11odS58OlyssaY8bLrq90XrT-yhgD2hYRMA9ZtLincmM/edit?usp=sharing"
-                            target="_blank">בגליון האקסל שלנו</a>
-                        על מנת להשוות ולגלות כמה חסכתם.
-                    </p>
-                </div>
-                <div class="modal-footer">
+            <h1 class="display-4 mt-5">
+                מה הלאה?
+            </h1>
+
+            <div class="text-right">
+                <p style="font-size: larger">
+                    מה שראיתם כאן הוא הערכה בלבד - עכשיו הגיע הזמן להשיג את הנתונים האמיתיים.
+                </p>
+                <p>
+                    הצעד הבא הוא לבדוק:
+                <ol>
+                    <li>
+                        כמה דמי ניהול אתם משלמים על הפנסיה שלכם?
+                    </li>
+                    <li>
+                        איפה הפנסיה שלכם מנוהלת?
+                    </li>
+                </ol>
+                </p>
+                <p>
+                    אם אתם לא יודעים את התשובות לשאלות האלה - אתם לא לבד! בשביל זה המציאו את <strong>המסלקה
+                        הפנסיונית</strong>.
+                </p>
+                <p>
+                    המסלקה הפנסיונית, הפועלת תחת משרד האוצר, מאפשרת לכם לקבל תמונת מצב מלאה על החסכונות הפנסיוניים
+                    שלכם.
+                </p>
+                <p>
+                    לאחר שתקבלו את תשובות המסלקה התקשרו לגוף המנהל את קרן הפנסיה שלכם ובקשו הנחה, זה עד כדי כך
+                    פשוט.<br />
+                    אם לא קיבלתם הנחה אתם תמיד יכולים לעבור, עם כל הכסף שצברתם עד היום,
+                    <a href="https://mof.gov.il/hon/Pages/DefaultPensionFund.aspx" target="_blank">לקרן פנסיה נבחרת
+                        של משרד האוצר</a>.
+                </p>
+                <p>
+                    אתם מוזמנים להשתמש
+                    <a href="https://docs.google.com/spreadsheets/d/11odS58OlyssaY8bLrq90XrT-yhgD2hYRMA9ZtLincmM/edit?usp=sharing"
+                        target="_blank">בגליון האקסל שלנו</a>
+                    על מנת להשוות ולגלות כמה חסכתם.
+                </p>
+                <div class="text-center mt-4">
                     <a href="https://saver.swiftness.co.il/he-IL/saver#/General/WizardRegistration" target="_blank">
-                        <button type="button" class="btn btn-primary">קחו אותי למסלקה הפנסיונית!</button>
+                        <button type="button" class="btn btn-xl btn-primary">קחו אותי למסלקה הפנסיונית!</button>
                     </a>
                 </div>
             </div>
