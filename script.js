@@ -61,7 +61,8 @@ function onSubmit() {
     calc.style.display = 'block';
     form.style.display = 'none';
     
-    calc.scrollIntoView(true);
+    if (window.innerWidth < 480)
+        calc.scrollIntoView(true);
     ag.hide();
     ag.show();
 }
