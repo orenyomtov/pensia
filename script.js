@@ -72,8 +72,8 @@ function numberWithCommas(x) {
 }
 
 function calculateFrayer(age, salary, startedWorkingAge) {
-    const averageDepositFee = 2.15 / 100;
-    const averageAccFee = 0.5 / 100;
+    const averageDepositFee = 2.12 / 100;
+    const averageAccFee = 0.21 / 100;
 
     const goodDepositFee = 1.49 / 100;
     const goodAccFee = 0.1 / 100;
