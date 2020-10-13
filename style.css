@@ -37,6 +37,10 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
+.btn {
+  margin-top: 10px;
+}
+
 .btn-xl {
     padding: 10px 20px;
     font-size: 20px;
