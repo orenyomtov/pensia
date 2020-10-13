@@ -55,19 +55,19 @@
                 <div class="card mb-4 border-0">
                     <div class="card-body">
                         <h3 class="card-title pricing-card-title">הגיל שלי</h3>
-                        <input type="number" pattern="[0-9]*" name="current_age" class="form-control" autofocus required></input>
+                        <input type="number" pattern="[0-9]*" min="14" max="120" name="current_age" class="form-control" autofocus required></input>
                     </div>
                 </div>
                 <div class="card mb-4 border-0">
                     <div class="card-body">
                         <h3 class="card-title pricing-card-title">התחלתי לעבוד בגיל</h3>
-                        <input type="number" pattern="[0-9]*" name="start_of_work_age" class="form-control" required></input>
+                        <input type="number" pattern="[0-9]*" min="14" max="120" name="start_of_work_age" class="form-control" required></input>
                     </div>
                 </div>
                 <div class="card mb-4 border-0">
                     <div class="card-body">
                         <h3 class="card-title pricing-card-title">משכורת ברוטו</h3>
-                        <input type="number" pattern="[0-9]*" name="salary" class="form-control" required></input>
+                        <input type="number" pattern="[0-9]*" min="100" step="100" name="salary" class="form-control" required></input>
                     </div>
                 </div>
 
