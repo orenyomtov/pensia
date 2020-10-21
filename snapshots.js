@@ -11,12 +11,14 @@ PercyScript.run(async (page, percySnapshot) => {
 
     console.log(`Server started at ${TEST_URL}`);
     await page.goto(TEST_URL);
+    await page.waitForTimeout(500);
     await percySnapshot('Home Page');
     
     await page.type("[name='current_age']", '35');
     await page.type("[name='start_of_work_age']", '27');
     await page.type("[name='salary']", '15');
     await page.click("#submit");
+    await page.waitForTimeout(500);
     await percySnapshot('Home Page - Input Validation');
 
     await page.type("[name='salary']", '15000');
@@ -25,7 +27,7 @@ PercyScript.run(async (page, percySnapshot) => {
     await percySnapshot('Home Page - Form Submitted');
 
     await page.click(".btn-outline-primary");
-    await page.waitForTimeout(500); // Wait for the modal to open
+    await page.waitForTimeout(1000); // Wait for the modal to open
     await percySnapshot('Home Page - Assumptions Modal Open');
 
     server.close();
